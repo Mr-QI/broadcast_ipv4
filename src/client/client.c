@@ -30,10 +30,10 @@ struct client_conf_st client_conf =  {\
 
 static void printhelp(void)
 {
-    printf("-P --port   指定接受端口\n      \
-            -M --mgroup 指定多播组\n        \
-            -p --player 指定播放器命令行\n   \
-            -H --help   显示帮助信息\n");
+    printf("-P  --port      指定接受端口\n");      
+    printf("-M  --mgroup    指定多播组\n");  
+    printf("-p  --player    指定播放器命令行\n");
+    printf("-H  --help      显示帮助信息\n");
 
 }
 
@@ -76,7 +76,8 @@ int main(int argc, char *argv[])
                              {NULL, 0, NULL, 0}};
 
     while (1)
-    {
+    {   
+        // 长格式命令行分析
         c = getopt_long(argc, argv, "P:M:p:H", argarr, &index);
         if (c < 0) break;
         
@@ -142,7 +143,7 @@ int main(int argc, char *argv[])
     {
         perror("fork error.");
         LOG("fork error.");
-        eixt(1);
+        exit(1);
     }
 
     // 子进程， 调解码器
@@ -255,5 +256,5 @@ int main(int argc, char *argv[])
     }
     free(msg_channel);
     close(sd);
-    return 0;
+   return 0;
 }

@@ -8,4 +8,4 @@ typedef uint8_t chnid_t;
 
 
 
-#endif __SITE_TYPE_H__
+#endif 
